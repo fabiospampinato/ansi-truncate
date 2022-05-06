@@ -7,7 +7,7 @@ import strip from './strip';
 
 /* MAIN */
 
-const truncate = ( str: string, width: number, options: { ellipsis?: string } ): string => {
+const truncate = ( str: string, width: number, options?: { ellipsis?: string } ): string => {
 
   if ( width <= 0 ) return '';
 
