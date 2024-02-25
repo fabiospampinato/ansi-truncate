@@ -19,6 +19,9 @@
     "ansi",
     "truncate"
   ],
+  "dependencies": {
+    "fast-string-width": "^1.0.2"
+  },
   "devDependencies": {
     "fava": "^0.2.1",
     "tiny-colors": "^2.0.2",

@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
+import stringWidth from 'fast-string-width';
 import {ANSI_RE, ELLIPSIS} from './constants';
-import getWidth from './get_width';
 import strip from './strip';
 
 /* MAIN */
@@ -13,11 +13,11 @@ const truncate = ( str: string, width: number, options?: { ellipsis?: string } )
 
   const strNoAnsi = strip ( str );
 
-  if ( getWidth ( strNoAnsi ) <= width ) return str;
+  if ( stringWidth ( strNoAnsi ) <= width ) return str;
 
   const ellipsis = options?.ellipsis ?? ELLIPSIS;
 
-  width -= getWidth ( strip ( ellipsis ) );
+  width -= stringWidth ( strip ( ellipsis ) );
 
   const parts = str.split ( ANSI_RE );
 
@@ -30,7 +30,7 @@ const truncate = ( str: string, width: number, options?: { ellipsis?: string } )
 
     if ( !( i % 2 ) ) { // Non-ANSI part
 
-      const partWidth = getWidth ( part );
+      const partWidth = stringWidth ( part );
 
       if ( ( truncatedWidth + partWidth ) >= width ) { // Exceeding part, truncating and exiting
 
