@@ -2,7 +2,7 @@
   "name": "ansi-truncate",
   "repository": "github:fabiospampinato/ansi-truncate",
   "description": "A tiny function for truncating a string that may contain ANSI escape sequences.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
