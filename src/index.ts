@@ -2,18 +2,19 @@
 /* IMPORT */
 
 import fastStringTruncatedWidth from 'fast-string-truncated-width';
-import {ANSI_RE, ELLIPSIS, RESET} from './constants';
+import {ANSI_RE, ELLIPSIS, ELLIPSIS_WIDTH, RESET} from './constants';
 import type {Options} from './types';
 
 /* MAIN */
 
 //TODO: Maybe detect where "RESET" is necessary more precisely
 
-const truncate = ( input: string, width: number, options?: { ellipsis?: string } ): string => {
+const truncate = ( input: string, width: number, options?: { ellipsis?: string, ellipsisWidth?: number } ): string => {
 
   const limit = width;
   const ellipsis = options?.ellipsis ?? ELLIPSIS;
-  const {index, ellipsed, truncated} = fastStringTruncatedWidth ( input, { limit, ellipsis } );
+  const ellipsisWidth = options?.ellipsisWidth ?? ( ellipsis === ELLIPSIS ? ELLIPSIS_WIDTH : undefined );
+  const {index, ellipsed, truncated} = fastStringTruncatedWidth ( input, { limit, ellipsis, ellipsisWidth } );
 
   if ( !truncated ) return input;
 

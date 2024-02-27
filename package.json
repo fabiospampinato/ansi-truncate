@@ -20,7 +20,7 @@
     "truncate"
   ],
   "dependencies": {
-    "fast-string-truncated-width": "^1.0.4"
+    "fast-string-truncated-width": "^1.1.0"
   },
   "devDependencies": {
     "fava": "^0.3.2",
