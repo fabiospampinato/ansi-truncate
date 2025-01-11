@@ -2,7 +2,8 @@
 /* MAIN */
 
 type Options = {
-  ellipsis?: string;
+  ellipsis?: string,
+  ellipsisWidth?: number
 };
 
 /* EXPORT */

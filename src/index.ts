@@ -9,7 +9,7 @@ import type {Options} from './types';
 
 //TODO: Maybe detect where "RESET" is necessary more precisely
 
-const truncate = ( input: string, width: number, options?: { ellipsis?: string, ellipsisWidth?: number } ): string => {
+const truncate = ( input: string, width: number, options?: Options ): string => {
 
   const limit = width;
   const ellipsis = options?.ellipsis ?? ELLIPSIS;
