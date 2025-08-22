@@ -10,11 +10,25 @@ const RED_START = '\u001b[31m';
 const RED_END = '\u001b[39m';
 const BLUE_START = '\u001b[34m';
 const BLUE_END = '\u001b[39m';
+const LINK_START = '\u001B]8;;https://example.com\u0007';
+const LINK_END = '\u001B]8;;\u0007';
 const RESET = '\u001b[0m';
 
 /* MAIN */
 
 describe ( 'ANSI Truncate', it => {
+
+  it ( 'works with escaped sorter link', t => {
+
+    t.is ( truncate ( `${LINK_START}link${LINK_END}`, 100 ), `${LINK_START}link${LINK_END}` );
+
+  });
+
+  it ( 'works with escaped longer link', t => {
+
+    t.is ( truncate ( `${LINK_START}link${LINK_END}`, 2 ), `${LINK_START}l…${RESET}${LINK_END}` );
+
+  });
 
   it ( 'works with escaped shorter strings', t => {
 

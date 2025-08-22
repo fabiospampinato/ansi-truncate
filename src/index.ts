@@ -2,12 +2,14 @@
 /* IMPORT */
 
 import fastStringTruncatedWidth from 'fast-string-truncated-width';
-import {ANSI_RE, ELLIPSIS, ELLIPSIS_WIDTH, RESET} from './constants';
+import {ANSI_STANDARD_RE, ANSI_LINK_RE} from './constants';
+import {ELLIPSIS, ELLIPSIS_WIDTH} from './constants';
+import {RESET_STANDARD, RESET_LINK} from './constants';
 import type {Options} from './types';
 
 /* MAIN */
 
-//TODO: Maybe detect where "RESET" is necessary more precisely
+//TODO: Maybe detect where resetting is necessary more precisely
 
 const truncate = ( input: string, width: number, options?: Options ): string => {
 
@@ -19,9 +21,10 @@ const truncate = ( input: string, width: number, options?: Options ): string => 
   if ( !truncated ) return input;
 
   const slice = input.slice ( 0, index );
-  const resettable = ANSI_RE.test ( slice );
+  const isStandardResettable = ANSI_STANDARD_RE.test ( slice );
+  const isLinkResettable = ANSI_LINK_RE.test ( slice );
 
-  return `${slice}${ellipsed ? ellipsis : ''}${resettable ? RESET : ''}`;
+  return `${slice}${ellipsed ? ellipsis : ''}${isStandardResettable ? RESET_STANDARD : ''}${isLinkResettable ? RESET_LINK : ''}`;
 
 };
 
